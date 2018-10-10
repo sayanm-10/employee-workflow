@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 
 export class AddUserComponent implements OnInit {
 
-    newEmployee = {
+    currentEmployee: Employee = {
         firstName: '',
         lastName: '',
         baseSalary: 0,
@@ -18,14 +18,18 @@ export class AddUserComponent implements OnInit {
         deductionVoluntary: 0,
         grossSalary: 0
     };
-    currentEmployee: Employee = this.newEmployee;
     employees: Employee[] = [];
 
     constructor() { 
     }
     
     ngOnInit() {
-        this.newEmployee = {
+    }
+
+    addEmployee(employee: Employee, form: NgForm) {
+        // insert new employee into list of employees
+        this.employees.push(employee);
+        this.currentEmployee = {
             firstName: '',
             lastName: '',
             baseSalary: 0,
@@ -34,11 +38,9 @@ export class AddUserComponent implements OnInit {
             deductionVoluntary: 0,
             grossSalary: 0
         };
-    }
-
-    addEmployee(employee: Employee) {
-        this.employees.push(employee);
-        this.currentEmployee = this.newEmployee;
+        // Reset validation
+        form.form.controls.firstName.markAsUntouched();
+        form.form.controls.lastName.markAsUntouched();
     }
 
     calculateSalary() {
@@ -47,7 +49,6 @@ export class AddUserComponent implements OnInit {
     }
 
     selectEmployee(id: number) {
-        debugger;
         this.currentEmployee = this.employees[id];
     }
 
