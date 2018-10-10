@@ -19,6 +19,8 @@ export class AddUserComponent implements OnInit {
         grossSalary: 0
     };
     employees: Employee[] = [];
+    isNewEmployee: boolean = true;
+    selectedEmployee: number;
 
     constructor() { 
     }
@@ -27,8 +29,15 @@ export class AddUserComponent implements OnInit {
     }
 
     addEmployee(employee: Employee, form: NgForm) {
-        // insert new employee into list of employees
-        this.employees.push(employee);
+        if(this.isNewEmployee) {
+            // insert new employee into list of employees
+            this.employees.push(employee);
+        } else {
+            // modify existing employee
+            this.employees[this.selectedEmployee] = employee;
+        }
+        
+        // Reset form values
         this.currentEmployee = {
             firstName: '',
             lastName: '',
@@ -38,9 +47,15 @@ export class AddUserComponent implements OnInit {
             deductionVoluntary: 0,
             grossSalary: 0
         };
+        this.isNewEmployee = true;
         // Reset validation
         form.form.controls.firstName.markAsUntouched();
         form.form.controls.lastName.markAsUntouched();
+    }
+
+    modifyEmployee(details: Employee) {
+        this.employees[this.selectedEmployee].firstName = details.firstName;
+        this.employees[this.selectedEmployee].lastName  = details.lastName;
     }
 
     calculateSalary() {
@@ -49,7 +64,9 @@ export class AddUserComponent implements OnInit {
     }
 
     selectEmployee(id: number) {
-        this.currentEmployee = this.employees[id];
+        this.isNewEmployee = false;
+        this.selectedEmployee = id;
+        this.currentEmployee = Object.assign({}, this.employees[id]);
     }
 
 }
