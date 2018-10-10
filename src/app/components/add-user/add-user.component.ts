@@ -41,6 +41,11 @@ export class AddUserComponent implements OnInit {
         this.currentEmployee = this.newEmployee;
     }
 
+    calculateSalary() {
+        this.currentEmployee.grossSalary = this.currentEmployee.baseSalary - this.currentEmployee.deduction401k - 
+            this.currentEmployee.deductionMedical - this.currentEmployee.deductionVoluntary;
+    }
+
 }
 
 interface Employee {

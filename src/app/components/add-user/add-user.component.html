@@ -11,19 +11,19 @@
         </div>
         <div class="form-group">
             <label for="baseSalary">Base Salary</label>
-            <input id="baseSalary" name="baseSalary" type="number" class="form-control" [(ngModel)]="currentEmployee.baseSalary">
+            <input id="baseSalary" name="baseSalary" type="number" class="form-control" [(ngModel)]="currentEmployee.baseSalary" (blur)="calculateSalary()">
         </div>
         <div class="form-group">
             <label for="deduction401k">401k Deduction</label>
-            <input id="deduction401k" name="deduction401k" type="number" class="form-control" [(ngModel)]="currentEmployee.deduction401k">
+            <input id="deduction401k" name="deduction401k" type="number" class="form-control" [(ngModel)]="currentEmployee.deduction401k" (blur)="calculateSalary()">
         </div>
         <div class="form-group">
             <label for="deductionMedical">Medical Insurance Deduction</label>
-            <input id="deductionMedical" name="deductionMedical" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionMedical">
+            <input id="deductionMedical" name="deductionMedical" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionMedical" (blur)="calculateSalary()">
         </div>
         <div class="form-group">
             <label for="deductionVoluntary">Voluntary Deduction</label>
-            <input id="deductionVoluntary" name="deductionVoluntary" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionVoluntary">
+            <input id="deductionVoluntary" name="deductionVoluntary" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionVoluntary" (blur)="calculateSalary()">
         </div>
         <div class="form-group">
             <label for="grossSalary">Gross Salary</label>
