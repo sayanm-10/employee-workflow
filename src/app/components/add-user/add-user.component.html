@@ -1,30 +1,57 @@
-<div>
+<div class="add-user-container">
     <h3>Add employee information</h3>
-    <form>
+    <form class="add-user-form" #addUserForm="ngForm">
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input id="firstName" type="text" class="form-control">
+            <input id="firstName" name="firstName" type="text" class="form-control" [(ngModel)]="currentEmployee.firstName">
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input id="lastName" type="text" class="form-control">
+            <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="currentEmployee.lastName">
         </div>
         <div class="form-group">
             <label for="baseSalary">Base Salary</label>
-            <input id="baseSalary" type="number" class="form-control">
+            <input id="baseSalary" name="baseSalary" type="number" class="form-control" [(ngModel)]="currentEmployee.baseSalary">
         </div>
         <div class="form-group">
             <label for="deduction401k">401k Deduction</label>
-            <input id="deduction401k" type="number" class="form-control">
+            <input id="deduction401k" name="deduction401k" type="number" class="form-control" [(ngModel)]="currentEmployee.deduction401k">
         </div>
         <div class="form-group">
             <label for="deductionMedical">Medical Insurance Deduction</label>
-            <input id="deductionMedical" type="number" class="form-control">
+            <input id="deductionMedical" name="deductionMedical" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionMedical">
         </div>
         <div class="form-group">
-            <label for="deductionVoluntary">Volunatry Deduction</label>
-            <input id="deductionVoluntary" type="number" class="form-control">
+            <label for="deductionVoluntary">Voluntary Deduction</label>
+            <input id="deductionVoluntary" name="deductionVoluntary" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionVoluntary">
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label for="grossSalary">Gross Salary</label>
+            <input id="grossSalary" name="grossSalary" readonly type="number" class="form-control" [(ngModel)]="currentEmployee.grossSalary">
+        </div>
+        <button class="btn btn-primary" (click)="addEmployee(currentEmployee)">Submit</button>
     </form>
+</div>
+
+<div class="employee-view-container">
+    <div class="table">
+        <div class="table-row thead-dark">
+            <div class="table-row-column">First Name</div>
+            <div class="table-row-column">Last Name</div>
+            <div class="table-row-column">Base Salary</div>
+            <div class="table-row-column">401k Deduction</div>
+            <div class="table-row-column">Medical Deduction</div>
+            <div class="table-row-column">Voluntary Deduction</div>
+            <div class="table-row-column">Gross Salary</div>
+        </div>
+        <div *ngFor="let emp of employees" class="table-row">
+            <div class="table-row-column">{{ emp.firstName }}</div>
+            <div class="table-row-column">{{ emp.lastName }}</div>
+            <div class="table-row-column">{{ emp.baseSalary }}</div>
+            <div class="table-row-column">{{ emp.deduction401k }}</div>
+            <div class="table-row-column">{{ emp.deductionMedical }}</div>
+            <div class="table-row-column">{{ emp.deductionVoluntary }}</div>
+            <div class="table-row-column">{{ emp.grossSalary }}</div>
+        </div>
+    </div>
 </div>

@@ -13,7 +13,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
         AddUserComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

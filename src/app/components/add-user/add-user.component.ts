@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
     selector: 'add-user',
@@ -8,9 +9,46 @@ import { Component, OnInit } from '@angular/core';
 
 export class AddUserComponent implements OnInit {
 
-    constructor() { }
+    newEmployee = {
+        firstName: '',
+        lastName: '',
+        baseSalary: 0,
+        deduction401k: 0,
+        deductionMedical: 0,
+        deductionVoluntary: 0,
+        grossSalary: 0
+    };
+    currentEmployee: Employee = this.newEmployee;
+    employees: Employee[] = [];
 
+    constructor() { 
+    }
+    
     ngOnInit() {
+        this.newEmployee = {
+            firstName: '',
+            lastName: '',
+            baseSalary: 0,
+            deduction401k: 0,
+            deductionMedical: 0,
+            deductionVoluntary: 0,
+            grossSalary: 0
+        };
     }
 
+    addEmployee(employee: Employee) {
+        this.employees.push(employee);
+        this.currentEmployee = this.newEmployee;
+    }
+
+}
+
+interface Employee {
+    firstName: string,
+    lastName: string,
+    baseSalary: number,
+    deduction401k: number,
+    deductionMedical: number,
+    deductionVoluntary: number,
+    grossSalary: number
 }
