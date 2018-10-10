@@ -3,31 +3,91 @@
     <form class="add-user-form" #addUserForm="ngForm">
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input id="firstName" name="firstName" type="text" class="form-control" [(ngModel)]="currentEmployee.firstName">
+            <input 
+                required 
+                id="firstName" 
+                name="firstName" 
+                #firstName="ngModel" 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.firstName"
+            >
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is required</div>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="currentEmployee.lastName">
+            <input 
+                required 
+                id="lastName" 
+                name="lastName" 
+                #lastName="ngModel" 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.lastName"
+            >
+            <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Last Name is required</div>
         </div>
         <div class="form-group">
             <label for="baseSalary">Base Salary</label>
-            <input id="baseSalary" name="baseSalary" type="number" class="form-control" [(ngModel)]="currentEmployee.baseSalary" (blur)="calculateSalary()">
+            <input 
+                required min="100" 
+                id="baseSalary" 
+                name="baseSalary" 
+                #baseSalary="ngModel" 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.baseSalary" 
+                (blur)="calculateSalary()"
+            >
+            <div class="alert alert-danger" *ngIf="baseSalary.touched && !baseSalary.valid && !baseSalary.errors.min">Base Salary must be greater than 0</div>
         </div>
         <div class="form-group">
             <label for="deduction401k">401k Deduction</label>
-            <input id="deduction401k" name="deduction401k" type="number" class="form-control" [(ngModel)]="currentEmployee.deduction401k" (blur)="calculateSalary()">
+            <input 
+                id="deduction401k" 
+                name="deduction401k" 
+                #deduction401k="ngModel" 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.deduction401k" 
+                (blur)="calculateSalary()"
+            >
         </div>
         <div class="form-group">
             <label for="deductionMedical">Medical Insurance Deduction</label>
-            <input id="deductionMedical" name="deductionMedical" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionMedical" (blur)="calculateSalary()">
+            <input 
+                id="deductionMedical" 
+                name="deductionMedical" 
+                #deductionMedical="ngModel" 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.deductionMedical" 
+                (blur)="calculateSalary()"
+            >
         </div>
         <div class="form-group">
             <label for="deductionVoluntary">Voluntary Deduction</label>
-            <input id="deductionVoluntary" name="deductionVoluntary" type="number" class="form-control" [(ngModel)]="currentEmployee.deductionVoluntary" (blur)="calculateSalary()">
+            <input 
+                id="deductionVoluntary" 
+                name="deductionVoluntary" 
+                #deductionVoluntary="ngModel" 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.deductionVoluntary" 
+                (blur)="calculateSalary()"
+            >
         </div>
         <div class="form-group">
             <label for="grossSalary">Gross Salary</label>
-            <input id="grossSalary" name="grossSalary" readonly type="number" class="form-control" [(ngModel)]="currentEmployee.grossSalary">
+            <input 
+                id="grossSalary" 
+                name="grossSalary" 
+                #grossSalary="ngModel" 
+                readonly 
+                type="number" 
+                class="form-control" 
+                [(ngModel)]="currentEmployee.grossSalary"
+            >
         </div>
         <button class="btn btn-primary" (click)="addEmployee(currentEmployee)">Submit</button>
     </form>
