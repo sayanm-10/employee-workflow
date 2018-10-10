@@ -46,6 +46,11 @@ export class AddUserComponent implements OnInit {
             this.currentEmployee.deductionMedical - this.currentEmployee.deductionVoluntary;
     }
 
+    selectEmployee(id: number) {
+        debugger;
+        this.currentEmployee = this.employees[id];
+    }
+
 }
 
 interface Employee {

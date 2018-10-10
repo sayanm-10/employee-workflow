@@ -44,7 +44,7 @@
             <div class="table-row-column">Voluntary Deduction</div>
             <div class="table-row-column">Gross Salary</div>
         </div>
-        <div *ngFor="let emp of employees" class="table-row">
+        <div *ngFor="let emp of employees; let id = index" class="table-row" id={{id}} (click)="selectEmployee(id)">
             <div class="table-row-column">{{ emp.firstName }}</div>
             <div class="table-row-column">{{ emp.lastName }}</div>
             <div class="table-row-column">{{ emp.baseSalary }}</div>
