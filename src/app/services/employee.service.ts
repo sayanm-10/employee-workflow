@@ -13,9 +13,11 @@ export class EmployeeService {
     }
 
     getEmployees() {
-        console.log('getEmp() called!');
-        
         return this.http.get('http://localhost:3000/employee')
             .pipe(map(res => res.json()));
+    }
+
+    addEmployee(employee) {
+        return this.http.post('http://localhost:3000/employee/add', employee);
     }
 }

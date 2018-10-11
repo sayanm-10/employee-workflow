@@ -23,10 +23,10 @@ router.get("/", async (req, res) => {
 
 router.post("/add", async (req, res) => {
     try {
-        const insert = `$(INSERT_EMP)$(req.body.firstName),$(req.body.lastName),$(req.body.baseSalary),$(req.body.deduction401k),
-            $(req.body.deductionMedical),$(req.body.deductionVoluntary),$(req.body.grossSalary)`;
+        const insert = `${INSERT_EMP}'${req.body.firstName}','${req.body.lastName}',${req.body.baseSalary},${req.body.deduction401k},
+            ${req.body.deductionMedical},${req.body.deductionVoluntary},${req.body.grossSalary})`;
         
-        console.log("INSERT QUERY: ", insert);
+        // console.log("INSERT QUERY: ", insert);
         conn.query(insert, (err, result) => {
             if (err) {
                 console.log(err);
@@ -36,7 +36,7 @@ router.post("/add", async (req, res) => {
             }
         })
     } catch (ex) {
-        res.status(404).json({error: 'Records not found'});
+        res.status(404).json({error: 'End point not found'});
     }
 });
 

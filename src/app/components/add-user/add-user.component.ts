@@ -34,6 +34,12 @@ export class AddUserComponent implements OnInit {
         if(this.isNewEmployee) {
             // insert new employee into list of employees
             this.employees.push(employee);
+            this.employeeService.addEmployee(employee).subscribe(
+                res => {},
+                err => {
+                    console.log('Employee Add to DB failed: ', err);
+                }
+            );
         } else {
             // modify existing employee
             this.employees[this.selectedEmployee] = employee;
