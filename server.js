@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Point static path to dist
-// app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '/dist/employee-workflow')));
 
 // Set CORS and API routes
 app.use(cors());
@@ -22,7 +22,9 @@ api(app);
 
 // Catch the base route to check if server is responding
 app.get('/', (req, res) => {
-    res.status(200).send("Base API")
+    // res.status(200).send("Base API")
+    res.sendFile(__dirname + '/dist/employee-workflow/index.html');
+    // res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('*', (req, res) => {
