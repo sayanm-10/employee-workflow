@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require("body-parser");
 
 // API routes
-// const api = require('./server/routes/api');
+const api = require('./server/routes/main');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set API routes
 // app.use('/api', api);
+api(app);
 
 // Catch all other routes and return the index file
 app.get('/', (req, res) => {
