@@ -3,6 +3,8 @@
 }
 
 .add-user-container h3 {
+    display: none;
+    margin-top: 10px; 
     text-align: center;
 }
 

@@ -1,3 +1,15 @@
-h1 {
+.header {
     text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 1px rgba(0,0,0,.1);
+}
+
+.header h1 {
+    color: #ea8c2a;
+    width: 366px;
+    display: inline-block;
+}
+
+.header img {
+    vertical-align: inherit;
 }

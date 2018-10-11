@@ -16,12 +16,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 // app.use(express.static(path.join(__dirname, 'dist')));
 
-// Set API routes
-// app.use('/api', api);
+// Set CORS and API routes
 app.use(cors());
 api(app);
 
-// Catch all other routes and return the index file
+// Catch the base route to check if server is responding
 app.get('/', (req, res) => {
     res.status(200).send("Base API")
 });
@@ -30,7 +29,7 @@ app.get('*', (req, res) => {
     res.status(404).json({error: "404 Page Not Found"});
 });
 
-// get PORT if available
+// get PORT if available else 3000
 const port = process.env.PORT || '3000';
 app.set('port', port);
 

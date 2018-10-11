@@ -6,7 +6,6 @@ const config = {
     password: 'admin',
     server: 'DESKTOP-F0BUUL0\\SQLEXPRESS',
     database: 'EmployeeDB'
-    // port: '1444'
 }
 
 const connection = msSql.connect(config, err => {

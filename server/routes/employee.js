@@ -26,7 +26,6 @@ router.post("/add", async (req, res) => {
         const insert = `${INSERT_EMP}'${req.body.firstName}','${req.body.lastName}',${req.body.baseSalary},${req.body.deduction401k},
             ${req.body.deductionMedical},${req.body.deductionVoluntary},${req.body.grossSalary})`;
         
-        // console.log("INSERT QUERY: ", insert);
         conn.query(insert, (err, result) => {
             if (err) {
                 console.log(err);
