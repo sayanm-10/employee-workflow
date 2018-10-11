@@ -27,19 +27,19 @@ export class AddUserComponent implements OnInit {
     constructor(private employeeService: EmployeeService) { }
     
     ngOnInit() {
-        this.employeeService.getEmployees().subscribe(emp => this.employees = emp[0]);
+        // this.employeeService.getEmployees().subscribe(emp => this.employees = emp[0]);
     }
 
     addEmployee(employee: Employee, form: NgForm) {
         if(this.isNewEmployee) {
             // insert new employee into list of employees
             this.employees.push(employee);
-            this.employeeService.addEmployee(employee).subscribe(
-                res => {},
-                err => {
-                    console.log('Employee Add to DB failed: ', err);
-                }
-            );
+            // this.employeeService.addEmployee(employee).subscribe(
+            //     res => {},
+            //     err => {
+            //         console.log('Employee Add to DB failed: ', err);
+            //     }
+            // );
         } else {
             // modify existing employee
             this.employees[this.selectedEmployee] = employee;
