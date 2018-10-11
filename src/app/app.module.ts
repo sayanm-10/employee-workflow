@@ -2,10 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+
+import { EmployeeService } from './services/employee.service';
 
 @NgModule({
     declarations: [
@@ -14,9 +15,10 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        HttpModule
     ],
-    providers: [],
+    providers: [EmployeeService],
     bootstrap: [AppComponent]
 })
 

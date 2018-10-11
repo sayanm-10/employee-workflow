@@ -1,6 +1,7 @@
-const express = require("express");
+const express = require('express');
 const path = require('path');
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // API routes
 const api = require('./server/routes/api');
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set API routes
 // app.use('/api', api);
+app.use(cors());
 api(app);
 
 // Catch all other routes and return the index file

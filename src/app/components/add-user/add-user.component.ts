@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import {EmployeeService } from '../../services/employee.service';
+
 @Component({
     selector: 'add-user',
     templateUrl: './add-user.component.html',
@@ -22,10 +24,10 @@ export class AddUserComponent implements OnInit {
     isNewEmployee: boolean = true;
     selectedEmployee: number;
 
-    constructor() { 
-    }
+    constructor(private employeeService: EmployeeService) { }
     
     ngOnInit() {
+        this.employeeService.getEmployees().subscribe(emp => this.employees = emp[0]);
     }
 
     addEmployee(employee: Employee, form: NgForm) {
