@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const conn = require('../config/connection');
 
-const GET_ALL_EMP = "select * from Employee";
+const GET_ALL_EMP = `select FirstName as firstName, LastName as lastName, BaseSalary as baseSalary, Deduction401k as deduction401k,
+                    DeductionMedical as deductionMedical, DeductionVoluntary as deductionVoluntary, GrossSalary as grossSalary from Employee`;
 const INSERT_EMP = "insert into Employee values (";
 
 router.get("/", async (req, res) => {
